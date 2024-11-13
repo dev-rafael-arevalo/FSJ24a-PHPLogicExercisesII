@@ -16,7 +16,7 @@ function minimumNumber($n, $password) {
     $upper_case = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
     $special_characters = "!@#$%^&*()-+";
     
-    $has_number = false;
+    $has_digit = false;
     $has_lower = false;
     $has_upper = false;
     $has_special = false;
@@ -24,20 +24,20 @@ function minimumNumber($n, $password) {
    
     for ($i = 0; $i < $n; $i++) {
         $char = $password[$i];
-        if (strpos($numbers, $char) !== false) $has_number = true;
+        if (strpos($numbers, $char) !== false) $has_digit = true;
         if (strpos($lower_case, $char) !== false) $has_lower = true;
         if (strpos($upper_case, $char) !== false) $has_upper = true;
         if (strpos($special_characters, $char) !== false) $has_special = true;
     }
     
-    $tipos_faltantes = 0;
-    if (!$has_digit) $tipos_faltantes++;
-    if (!$has_lower) $tipos_faltantes++;
-    if (!$has_upper) $tipos_faltantes++;
-    if (!$has_special) $tipos_faltantes++;
+    $missing_types = 0;
+    if (!$has_digit) $missing_types++;
+    if (!$has_lower) $missing_types++;
+    if (!$has_upper) $missing_types++;
+    if (!$has_special) $missing_types++;
     
     
-    return max($tipos_faltantes, 6 - $n);
+    return max($missing_types, 6 - $n);
 
 }
 
